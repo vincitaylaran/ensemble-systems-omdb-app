@@ -9,12 +9,14 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
+const initialResult = {
+  success: true,
+  items: [],
+  errorMessage: '',
+};
+
 function App() {
-  const [result, setResult] = useState({
-    success: true,
-    items: [],
-    errorMessage: '',
-  });
+  const [result, setResult] = useState(initialResult);
 
   const fetchMovies = async (searchTerm) => {
     if (!isStringEmptyOrNull(searchTerm)) {
@@ -27,7 +29,7 @@ function App() {
       return;
     }
 
-    setResult({ ...result, items: [] });
+    setResult(initialResult);
   };
 
   return (
