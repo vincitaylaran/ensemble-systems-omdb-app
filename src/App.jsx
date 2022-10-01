@@ -23,7 +23,11 @@ function App() {
       const response = await request.json();
 
       setResult(toResult(response));
+
+      return;
     }
+
+    setResult({ ...result, items: [] });
   };
 
   return (
