@@ -1,11 +1,11 @@
 import React from 'react';
 import Result from './Result';
 
-function Results({ results, onTodo }) {
+function Results({ results }) {
   return (
     <div className='resultsArea'>
       {results.map((result) => (
-        <Result key={result.imdbID} result={result} onTodo={onTodo} />
+        <Result key={result.imdbID} result={result} />
       ))}
     </div>
   );

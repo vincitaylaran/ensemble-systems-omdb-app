@@ -17,13 +17,7 @@ function App() {
       const { Response, Search, totalResults } = response;
 
       if (Number(totalResults) > 0 && Response.toLowerCase() === 'true') {
-        // Gives each result a "TODO" indicator so that you can label each button with "TODO"
-        const searchResultsWithTodo = Search.map((result) => ({
-          ...result,
-          isTodo: false,
-        }));
-
-        setSearchResults(searchResultsWithTodo);
+        setSearchResults(Search);
       }
 
       return;
@@ -32,22 +26,10 @@ function App() {
     setSearchResults([]);
   };
 
-  const handleTodo = (movie) => {
-    const newResults = searchResults.map((result) => {
-      if (result.imdbID === movie.imdbID) {
-        return { ...result, isTodo: true };
-      }
-
-      return result;
-    });
-
-    setSearchResults(newResults);
-  };
-
   return (
     <div className='App'>
       <AutoSearch onSearch={fetchMovies} />
-      <Results results={searchResults} onTodo={handleTodo} />
+      <Results results={searchResults} />
     </div>
   );
 }
