@@ -1,14 +1,14 @@
 import React from 'react';
 import Result from './Result';
-import '../styles/Results.css';
+import ImageList from '@mui/material/ImageList';
 
 function Results({ results }) {
   return (
-    <div className='resultsArea'>
+    <ImageList cols={3} gap={32} sx={{ paddingTop: 10 }}>
       {results.map((result) => (
         <Result key={result.imdbID} result={result} />
       ))}
-    </div>
+    </ImageList>
   );
 }
 

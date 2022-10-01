@@ -5,6 +5,9 @@ import settings from './settings';
 import Results from './components/Results';
 import AutoSearch from './components/AutoSearch';
 import { toResult } from './mapper';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 
 function App() {
   const [result, setResult] = useState({
@@ -25,11 +28,16 @@ function App() {
 
   return (
     <div className='App'>
-      <AutoSearch
-        onSearch={fetchMovies}
-        error={!result.success}
-        errorMessage={result.errorMessage}
-      />
+      <AppBar>
+        <Toolbar sx={{ justifyContent: 'space-between', padding: 1 }}>
+          <Typography variant='h3'>OMDB</Typography>
+          <AutoSearch
+            onSearch={fetchMovies}
+            error={!result.success}
+            errorMessage={result.errorMessage}
+          />
+        </Toolbar>
+      </AppBar>
       <Results results={result.items} />
     </div>
   );

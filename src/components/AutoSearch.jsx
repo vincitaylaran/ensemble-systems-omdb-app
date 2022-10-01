@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/AutoSearch.css';
 import TextField from '@mui/material/TextField';
 
 function AutoSearch({ onSearch, error, errorMessage }) {
@@ -12,6 +11,7 @@ function AutoSearch({ onSearch, error, errorMessage }) {
       name='search'
       placeholder='Search movie...'
       onChange={(event) => onSearch(event.target.value)}
+      sx={{ background: 'white', borderRadius: 1 }}
     />
   );
 }

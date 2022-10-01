@@ -1,14 +1,23 @@
 import React from 'react';
-import '../styles/Result.css';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
+import Button from '@mui/material/Button';
 
 function Result({ result }) {
   return (
-    <div className='result'>
+    <ImageListItem>
       <img src={result.Poster} alt={result.Title} />
-      <h2>Title: {result.Title}</h2>
-      <h3>Released in: {result.Year}</h3>
-      <button>TODO</button>
-    </div>
+      <ImageListItemBar
+        title={result.Title}
+        subtitle={`Released in: ${result.Year}`}
+        position='below'
+        actionIcon={
+          <Button sx={{ marginTop: '6px' }} variant='contained' size='small'>
+            TODO
+          </Button>
+        }
+      />
+    </ImageListItem>
   );
 }
 
