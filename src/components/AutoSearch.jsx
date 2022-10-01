@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/AutoSearch.css';
 
 function AutoSearch({ onSearch }) {
   return (

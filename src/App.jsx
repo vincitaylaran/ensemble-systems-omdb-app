@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import './styles/App.css';
-import { isStringEmptyOrNull } from './helper';
+import { isStringEmptyOrNull } from './helpers';
 import settings from './settings';
 import Results from './components/Results';
 import AutoSearch from './components/AutoSearch';
