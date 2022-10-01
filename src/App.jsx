@@ -4,9 +4,14 @@ import { isStringEmptyOrNull } from './helpers';
 import settings from './settings';
 import Results from './components/Results';
 import AutoSearch from './components/AutoSearch';
+import { toResult } from './mapper';
 
 function App() {
-  const [searchResults, setSearchResults] = useState([]);
+  const [result, setResult] = useState({
+    success: true,
+    items: [],
+    errorMessage: '',
+  });
 
   const fetchMovies = async (searchTerm) => {
     if (!isStringEmptyOrNull(searchTerm)) {
@@ -14,22 +19,18 @@ function App() {
       const request = await fetch(endpoint);
       const response = await request.json();
 
-      const { Response, Search, totalResults } = response;
-
-      if (Number(totalResults) > 0 && Response.toLowerCase() === 'true') {
-        setSearchResults(Search);
-      }
-
-      return;
+      setResult(toResult(response));
     }
-
-    setSearchResults([]);
   };
 
   return (
     <div className='App'>
-      <AutoSearch onSearch={fetchMovies} />
-      <Results results={searchResults} />
+      <AutoSearch
+        onSearch={fetchMovies}
+        error={!result.success}
+        errorMessage={result.errorMessage}
+      />
+      <Results results={result.items} />
     </div>
   );
 }
