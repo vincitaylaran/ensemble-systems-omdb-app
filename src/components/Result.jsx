@@ -12,7 +12,11 @@ function Result({ result }) {
         subtitle={`Released in: ${result.Year}`}
         position='below'
         actionIcon={
-          <Button sx={{ marginTop: '6px' }} variant='contained' size='small'>
+          <Button
+            sx={{ marginTop: '6px', marginLeft: '6px' }}
+            variant='contained'
+            size='small'
+          >
             TODO
           </Button>
         }
