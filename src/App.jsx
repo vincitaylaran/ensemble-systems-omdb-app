@@ -24,6 +24,7 @@ function App() {
       const request = await fetch(endpoint);
       const response = await request.json();
 
+      // Convert the response object into a more standardized object
       setResult(toResult(response));
 
       return;
